@@ -1,5 +1,5 @@
-import { Eyebrow, Media } from "@/components/ui/Primitives";
-import { photos } from "@/content";
+import Image from "next/image";
+import { Eyebrow } from "@/components/ui/Primitives";
 import { RatRace } from "./RatRace";
 
 export function WhyQuit() {
@@ -35,10 +35,13 @@ export function WhyQuit() {
               <span aria-hidden className="pointer-events-none absolute inset-x-[12%] bottom-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-red),transparent)]" />
 
               <div className="grid items-center gap-2 p-4 sm:grid-cols-[1.15fr_1fr] sm:gap-0 sm:p-6 lg:grid-cols-1 lg:gap-2 lg:p-8">
-                <Media
-                  slot={photos.productsTested}
-                  sizes="(min-width: 1280px) 50vw, (min-width: 1024px) 90vw, (min-width: 640px) 50vw, 92vw"
-                  className="aspect-[5/4] rounded-[1.25rem] lg:aspect-[21/9] xl:aspect-[16/9]"
+                <Image
+                  src="/formatos/produtos-testados.webp"
+                  alt="Alguns dos produtos testados: guia do Natal, 150 Salmos, capas de caderno e bandeirolas de festa junina"
+                  width={900}
+                  height={389}
+                  sizes="(min-width: 1280px) 30vw, (min-width: 1024px) 60vw, (min-width: 640px) 45vw, 92vw"
+                  className="h-auto w-full drop-shadow-[0_20px_30px_rgb(0_0_0/0.5)]"
                 />
 
                 <div className="px-3 pt-4 pb-5 text-center sm:border-l sm:border-white/10 sm:py-4 sm:pr-2 sm:pl-8 sm:text-left lg:border-l-0 lg:px-6 lg:pt-6 lg:pb-2 lg:text-center">
@@ -49,9 +52,6 @@ export function WhyQuit() {
                   </p>
                   <p className="mt-6 text-[1.125rem] leading-snug font-bold tracking-[-0.02em]">
                     E te digo: anúncio no ar não quer dizer lucro.
-                  </p>
-                  <p className="mt-3 text-[1rem] leading-relaxed text-(--mute)">
-                    Você não sabe se a pessoa está tendo lucro com aquele produto.
                   </p>
                 </div>
               </div>

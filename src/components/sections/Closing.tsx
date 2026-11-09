@@ -86,15 +86,15 @@ export function Faq() {
 export function Final() {
   return (
     <section id="final" className="theme-light section-y relative overflow-hidden">
-      <div className="wrap">
+      <div className="wrap text-center">
         <p className="label text-red" data-reveal>
           Não é um produto
         </p>
-        <h2 data-split className="mt-6 text-[clamp(3rem,10vw,10rem)] leading-[0.88] font-extrabold tracking-[-0.06em]">
+        <h2 data-split className="mt-6 text-[clamp(3rem,10vw,10rem)] leading-[1.08] font-extrabold tracking-[-0.06em]">
           É um movimento.
         </h2>
-        <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:items-end">
-          <div className="lead space-y-5 text-(--mute) lg:col-span-6" data-reveal>
+        <div className="mx-auto mt-6 flex max-w-[40rem] flex-col items-center gap-10 lg:mt-8">
+          <div className="lead space-y-5 text-(--mute)" data-reveal>
             <p>
               Executores passando pelo mesmo processo, um agregando o outro, cada um construindo a própria oferta.
               Independente se você é iniciante ou mais avançado, a mentoria O PROCESSO é pra você.
@@ -103,19 +103,13 @@ export function Final() {
               Você nunca vai estar no momento certo. Executa assim mesmo.
             </p>
           </div>
-          <div className="lg:col-span-5 lg:col-start-8" data-reveal>
+          <div className="w-full max-w-[30rem]" data-reveal>
             <Cta size="lg" className="w-full" />
             <p className="label mt-5 text-center leading-relaxed text-(--mute)">
               R$ 1.197 · Pix ou 12x · acesso vitalício · 7 dias de garantia
             </p>
           </div>
         </div>
-        <p
-          aria-hidden
-          className="pointer-events-none mt-24 text-center text-[clamp(4rem,17vw,17rem)] leading-[0.8] font-extrabold tracking-[-0.07em] text-ink/[0.05] select-none lg:mt-32"
-        >
-          É só fazer.
-        </p>
       </div>
     </section>
   );

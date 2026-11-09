@@ -21,11 +21,14 @@ export function VideoCard({
   variant = "portrait",
   className = "",
   sizes = "(min-width: 1024px) 22vw, 70vw",
+  bare = false,
 }: {
   video: Video;
   variant?: "portrait" | "landscape";
   className?: string;
   sizes?: string;
+  /** só o vídeo: sem nome, legenda nem etiqueta por cima */
+  bare?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -74,8 +77,8 @@ export function VideoCard({
             className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         )}
-        <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
-        {!video.poster && (
+        {!bare && <span className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />}
+        {!video.poster && !bare && (
           <span className="label absolute top-5 left-5 rounded-full border border-white/20 px-2.5 py-1 text-[0.625rem] text-white/70">
             {landscape ? "vídeo" : "depoimento"}
           </span>
@@ -83,10 +86,12 @@ export function VideoCard({
         <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ease-(--ease-back) group-hover:scale-110">
           <PlayBadge size={landscape ? "lg" : "md"} />
         </span>
-        <span className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-          <span className="block text-[1.125rem] font-extrabold tracking-[-0.02em]">{video.name}</span>
-          <span className="mt-0.5 block text-[0.8125rem] text-white/65">{video.meta}</span>
-        </span>
+        {!bare && (
+          <span className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+            <span className="block text-[1.125rem] font-extrabold tracking-[-0.02em]">{video.name}</span>
+            <span className="mt-0.5 block text-[0.8125rem] text-white/65">{video.meta}</span>
+          </span>
+        )}
       </button>
 
       {open && (

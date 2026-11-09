@@ -55,11 +55,13 @@ const buildPieces = [
 const illustrations: ReactNode[] = [
   // 01 mineração
   <div key="1" className="grid w-full max-w-[13rem] grid-cols-3 gap-1.5">
-    {Array.from({ length: 6 }).map((_, i) => (
+    {[1, 2, 3].map((n, i) => (
       <span
-        key={i}
-        className={`aspect-[4/5] rounded-md ${i === 4 ? "bg-ink ring-2 ring-red ring-offset-2 ring-offset-(--card)" : "bg-(--card-2)"}`}
-      />
+        key={n}
+        className={`relative aspect-[4/5] overflow-hidden rounded-md ${i === 1 ? "bg-ink ring-2 ring-red ring-offset-2 ring-offset-(--card)" : "bg-(--card-2)"}`}
+      >
+        <Image src={`/mineracao/${n}.webp`} alt="" fill sizes="5rem" className="object-cover" />
+      </span>
     ))}
   </div>,
   // 02 modelagem 90/10
@@ -159,10 +161,9 @@ export function Method() {
           </ol>
 
           {/* do zero ao primeiro teste */}
-          <div className="mt-6 rounded-[1.75rem] bg-ink p-7 text-white sm:ml-14 sm:p-9" data-reveal>
-            <p className="label text-mute-d">Do zero ao primeiro anúncio no ar</p>
-            <p className="mt-3 text-[clamp(1.6rem,2.6vw,2.25rem)] leading-tight font-extrabold tracking-[-0.04em]">
-              de 7 a 12 dias
+          <div className="mt-6 rounded-[1.75rem] bg-ink p-7 text-center text-white sm:ml-14 sm:p-9 sm:text-left" data-reveal>
+            <p className="text-[clamp(1.6rem,2.6vw,2.25rem)] leading-tight font-extrabold tracking-[-0.04em] text-balance">
+              Primeiro anúncio no ar entre 7 e 12 dias
             </p>
             <div className="mt-7 grid grid-cols-12 gap-1">
               {Array.from({ length: 12 }).map((_, i) => (
@@ -176,7 +177,7 @@ export function Method() {
             </div>
             <div className="label mt-3 grid grid-cols-12 gap-1 text-[0.625rem] text-mute-d">
               <span className="col-span-5">5 dias de estratégia</span>
-              <span className="col-span-7 text-right">o resto executando · anúncios no ar entre o dia 7 e o 12</span>
+              <span className="col-span-7 sm:text-right">o resto executando</span>
             </div>
             <p className="mt-6 text-[0.9375rem] text-mute-d">
               Esse é o tempo até o teste de anúncios. O resultado depende da sua execução.

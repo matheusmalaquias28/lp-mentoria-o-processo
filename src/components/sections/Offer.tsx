@@ -1,6 +1,5 @@
 import { Cta } from "@/components/ui/Cta";
-import { Eyebrow } from "@/components/ui/Primitives";
-import { ArrowRight, Check, InfinityIcon, Shield } from "@/components/ui/Icons";
+import { ArrowRight, Check, InfinityIcon } from "@/components/ui/Icons";
 import { links, offer, offerIncludes, offerQuotes } from "@/content";
 
 function GuaranteeSeal() {
@@ -30,8 +29,7 @@ export function Offer() {
         className="pointer-events-none absolute top-40 left-1/2 h-[50rem] w-[60rem] -translate-x-1/2 rounded-full bg-red/15 blur-[170px]"
       />
       <div className="wrap relative">
-        <Eyebrow>A oferta</Eyebrow>
-        <figure className="mt-8 max-w-[56rem]">
+        <figure className="mx-auto max-w-[56rem] text-center">
           <blockquote data-split className="display-m">
             “O Heitor responde no privado, analisa suas concepções. Ninguém no mercado faz isso pelo preço da mentoria.”
           </blockquote>
@@ -40,25 +38,18 @@ export function Offer() {
           </figcaption>
         </figure>
 
-        <div className="mt-16 grid gap-4 lg:mt-20 lg:grid-cols-12 lg:gap-6">
+        <div className="mx-auto mt-16 grid max-w-[52rem] gap-4 lg:mt-20 lg:gap-6">
           {/* card de preço */}
-          <div className="theme-light rounded-[2rem] p-6 shadow-[0_60px_120px_-40px_rgb(232_20_28/0.45)] sm:p-10 lg:col-span-7 lg:p-12" data-reveal="scale">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="label text-(--mute)">Mentoria O PROCESSO</p>
+          <div className="theme-light rounded-[2rem] p-6 text-center shadow-[0_60px_120px_-40px_rgb(232_20_28/0.45)] sm:p-10 lg:mx-auto lg:w-[70%] lg:p-12" data-reveal="scale">
+            <div className="flex flex-col items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo-dark.svg" alt="O PROCESSO · Mentoria Heitor Nogueira" width={226} height={43} className="h-[3.15rem] w-auto" />
               <span className="label inline-flex items-center gap-1.5 rounded-full bg-ink px-3 py-1.5 text-white">
                 <InfinityIcon width={16} height={16} /> Acesso vitalício
               </span>
             </div>
 
-            <div className="mt-8 border-b border-(--line) pb-8">
-              <p className="text-[0.9375rem] font-semibold text-(--mute)">Pagamento único</p>
-              <p className="tabular mt-1 text-[clamp(3.6rem,8vw,6.5rem)] leading-[0.9] font-extrabold tracking-[-0.06em]">
-                {offer.price}
-              </p>
-              <p className="mt-3 text-[1.0625rem] font-bold">Pix à vista, ou em até 12x no cartão</p>
-            </div>
-
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-8 space-y-4 border-t border-(--line) pt-8 text-left">
               {offerIncludes.map((it) => (
                 <li key={it.title} className="flex gap-3.5">
                   <span className="mt-0.5 grid size-6 flex-none place-items-center rounded-full bg-red text-white">
@@ -71,24 +62,33 @@ export function Offer() {
               ))}
             </ul>
 
-            <div className="mt-8 rounded-2xl border-2 border-dashed border-red/50 bg-red/[0.04] p-5">
-              <p className="label text-red">Bônus pra quem entra hoje</p>
+            <div className="mt-8 rounded-2xl border-2 border-dashed border-[#1fa855]/55 bg-[#1fa855]/[0.06] p-5">
+              <p className="label text-[#15843f]">Bônus pra quem entra hoje</p>
               <p className="mt-2 text-[0.98rem] leading-relaxed">
                 <strong>25% de desconto no primeiro mês do CashFlow</strong>, a plataforma de gestão de múltiplas ofertas e
                 trackeamento avançado que eu uso na minha operação.
               </p>
             </div>
 
-            <div className="mt-9">
+            {/* preço logo acima do botão */}
+            <div className="mt-9 border-t border-(--line) pt-8">
+              <p className="text-[0.9375rem] font-bold text-(--mute)">Pagamento único</p>
+              <p className="tabular mt-1 text-[clamp(3.6rem,8vw,6.5rem)] leading-[0.9] font-extrabold tracking-[-0.06em]">
+                {offer.price}
+              </p>
+              <p className="mt-3 text-[1.0625rem] font-bold">Pix à vista, ou em até 12x no cartão</p>
+            </div>
+
+            <div className="mt-8">
               <Cta size="lg" className="w-full" />
-              <p className="mt-4 flex items-center justify-center gap-2 text-center text-[0.9375rem] font-semibold text-(--mute)">
-                <Shield className="text-red" /> 7 dias de garantia. Se não for pra você, devolvo.
+              <p className="mt-4 text-center text-[0.9375rem] font-semibold text-(--mute)">
+                7 dias de garantia. Se não for pra você, devolvo.
               </p>
             </div>
           </div>
 
           {/* garantia e objeções */}
-          <div className="flex flex-col gap-4 lg:col-span-5">
+          <div className="flex flex-col gap-4 lg:gap-6">
             <div className="rounded-[2rem] border border-(--line) bg-(--card) p-7 sm:p-9" data-reveal>
               <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                 <GuaranteeSeal />
@@ -101,13 +101,6 @@ export function Offer() {
                 Não é mensalidade e não tem fidelidade: é um pagamento, acesso pra sempre.
               </p>
             </div>
-
-            <figure className="rounded-[2rem] bg-white/[0.04] p-7 sm:p-9" data-reveal>
-              <blockquote className="text-[1.3rem] leading-snug font-bold tracking-[-0.02em]">
-                “{offerQuotes.henrique.quote}”
-              </blockquote>
-              <figcaption className="label mt-5 text-(--mute)">{offerQuotes.henrique.who}</figcaption>
-            </figure>
 
             <div className="rounded-[2rem] border border-red/40 p-7 sm:p-9" data-reveal>
               <p className="label text-red-hi">Fez o Workshop O PROCESSO?</p>

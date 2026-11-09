@@ -21,7 +21,7 @@ function Card({
       data-reveal
       className={`group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-(--line) bg-(--card) p-6 transition-colors duration-500 hover:border-white/20 sm:p-8 ${className}`}
     >
-      {visual && <div className="mb-8">{visual}</div>}
+      {visual && <div className="mb-8 flex flex-1 flex-col justify-center">{visual}</div>}
       <h4 className="h-title mt-auto">{title}</h4>
       <p className="mt-2.5 text-[0.98rem] leading-relaxed text-(--mute)">{children}</p>
     </article>
@@ -40,12 +40,60 @@ function PartHead({ n, title, kicker }: { n: string; title: string; kicker: stri
   );
 }
 
-function SheetMock() {
+/* os três tipos de material: planilha, PDF e documento, como arquivos em leque */
+function FileShell({ tag, tagBg, children, tilt }: { tag: string; tagBg: string; children: ReactNode; tilt: string }) {
   return (
-    <div className="grid grid-cols-4 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10">
-      {Array.from({ length: 16 }).map((_, i) => (
-        <span key={i} className={`h-6 ${i < 4 ? "bg-white/[0.09]" : i % 4 === 3 ? "bg-red/20" : "bg-ink"}`} />
-      ))}
+    <div
+      className={`relative aspect-[3/4] w-full rounded-lg border border-white/12 bg-[#1c1c1c] p-2.5 shadow-[0_14px_30px_rgb(0_0_0/0.45)] transition-transform duration-500 ease-(--ease-expo) group-hover:rotate-0 ${tilt}`}
+    >
+      {/* dobra do canto */}
+      <span aria-hidden className="absolute top-0 right-0 size-4 rounded-bl-md border-b border-l border-white/12 bg-[#2a2a2a]" />
+      {children}
+      <span
+        className="absolute bottom-2 left-2.5 rounded px-1.5 py-0.5 text-[0.5625rem] font-extrabold tracking-wide text-white"
+        style={{ background: tagBg }}
+      >
+        {tag}
+      </span>
+    </div>
+  );
+}
+
+function FilesMock() {
+  return (
+    <div className="grid grid-cols-3 gap-3 px-1 sm:gap-4" aria-hidden>
+      {/* planilha */}
+      <FileShell tag="XLSX" tagBg="#1d8a4e" tilt="-rotate-6 translate-y-1">
+        <div className="mt-3 grid grid-cols-3 gap-px overflow-hidden rounded-sm bg-white/10">
+          {Array.from({ length: 15 }).map((_, i) => (
+            <span
+              key={i}
+              className={`h-2.5 ${i < 3 ? "bg-[#1d8a4e]/70" : i % 3 === 2 ? "bg-[#1d8a4e]/25" : "bg-[#141414]"}`}
+            />
+          ))}
+        </div>
+      </FileShell>
+
+      {/* PDF */}
+      <FileShell tag="PDF" tagBg="var(--color-red)" tilt="-translate-y-1.5">
+        <span className="mt-3 block h-1.5 w-3/4 rounded-full bg-white/55" />
+        <span className="mt-1.5 block h-1 w-1/2 rounded-full bg-white/25" />
+        <span className="mt-2.5 block aspect-[16/10] w-full rounded-sm bg-red/25" />
+        <span className="mt-2 block h-1 w-full rounded-full bg-white/15" />
+        <span className="mt-1 block h-1 w-4/5 rounded-full bg-white/15" />
+      </FileShell>
+
+      {/* documento */}
+      <FileShell tag="DOC" tagBg="#2f6fe0" tilt="rotate-6 translate-y-1">
+        <span className="mt-3 block h-1.5 w-2/3 rounded-full bg-white/55" />
+        {Array.from({ length: 6 }).map((_, i) => (
+          <span key={i} className={`mt-1.5 block h-1 rounded-full bg-white/18 ${i % 3 === 2 ? "w-3/5" : "w-full"}`} />
+        ))}
+        <span className="mt-2 flex items-center gap-1">
+          <span className="size-1.5 rounded-sm bg-[#2f6fe0]" />
+          <span className="h-1 w-3/5 rounded-full bg-white/18" />
+        </span>
+      </FileShell>
     </div>
   );
 }
@@ -194,8 +242,8 @@ export function Deliverables() {
                   alt="Mesa de Guerra: call ao vivo do Heitor Nogueira com os executores, aberta num notebook"
                   width={1200}
                   height={900}
-                  sizes="(min-width: 1024px) 36rem, 92vw"
-                  className="mx-auto h-auto w-full max-w-[36rem] drop-shadow-[0_30px_40px_rgb(0_0_0/0.5)]"
+                  sizes="(min-width: 1024px) 44rem, 92vw"
+                  className="mx-auto h-auto w-full max-w-[36rem] drop-shadow-[0_30px_40px_rgb(0_0_0/0.5)] lg:max-w-[44rem]"
                 />
               }
             >
@@ -210,7 +258,7 @@ export function Deliverables() {
               Agentes de IA treinados na metodologia, disponíveis 24h, pra te ajudar na ideia, na oferta, na página e no
               anúncio. Ferramenta acelera, mas não pensa por você.
             </Card>
-            <Card title="Planilhas, PDFs e documentos" visual={<SheetMock />}>que a minha operação usa.</Card>
+            <Card title="Planilhas, PDFs e documentos" visual={<FilesMock />}>que a minha operação usa.</Card>
             <Card title="Modelos de página de vendas." visual={<PageModels />}>
               E o construtor de página dentro do HUB. Você nem paga hospedagem.
             </Card>

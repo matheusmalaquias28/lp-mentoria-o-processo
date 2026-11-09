@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import { Media } from "@/components/ui/Primitives";
-import { AdMock, EbookCover } from "@/components/mockups/Mockups";
+import Image from "next/image";
 import { lowTicketFormats } from "@/content";
 
 const caseStats = [
@@ -109,6 +109,22 @@ export function WhatIs() {
           </div>
         </div>
 
+        {/* símbolo de vidro colado na borda esquerda da tela, inclinado ao contrário do de cima (só desktop) */}
+        <div aria-hidden className="pointer-events-none relative z-20 hidden h-0 lg:block">
+          <div className="absolute top-[-11rem] left-[calc(50%-50vw-2rem)] w-[clamp(13rem,17vw,19rem)]">
+            <div className="float [--float:-14px]" style={{ animationDuration: "7s", "--d": "-3s" } as CSSProperties}>
+              <Image
+                src="/simbolo.webp"
+                alt=""
+                width={640}
+                height={749}
+                sizes="19rem"
+                className="h-auto w-full -rotate-[14deg] drop-shadow-[0_30px_50px_rgb(232_20_28/0.35)]"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* caso dos Salmos */}
         <div className="theme-dark relative mt-6 overflow-hidden rounded-[2rem] lg:mt-8">
           <div
@@ -155,12 +171,16 @@ export function WhatIs() {
                 <span className="text-(--mute)"> Era uma boa ideia, vendida do jeito certo.</span>
               </p>
             </div>
-            <div className="relative flex items-center justify-center gap-6 lg:col-span-5 lg:col-start-8">
-              <div className="w-[min(100%,17rem)]" data-parallax="0.06">
-                <AdMock />
-              </div>
-              <div className="absolute -right-2 bottom-4 hidden w-28 text-[1.1rem] sm:block lg:-right-6" data-parallax="0.18">
-                <EbookCover />
+            <div className="relative order-first flex items-center justify-center sm:order-none lg:col-span-6 lg:col-start-7">
+              <div className="w-full max-w-[34rem]" data-parallax="0.06">
+                <Image
+                  src="/formatos/salmos-pacote.webp"
+                  alt="Pacote dos 150 Salmos explicados versículo por versículo, com as páginas do ebook e os bônus"
+                  width={800}
+                  height={800}
+                  sizes="(min-width: 1024px) 34rem, 92vw"
+                  className="h-auto w-full drop-shadow-[0_30px_50px_rgb(0_0_0/0.55)]"
+                />
               </div>
             </div>
           </div>

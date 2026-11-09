@@ -148,10 +148,14 @@ export function Trail() {
               <div>
                 <div className="flex -space-x-2.5" aria-hidden>
                   {Array.from({ length: 7 }).map((_, i) => (
-                    <span
+                    <Image
                       key={i}
-                      className="size-10 rounded-full border-2 border-ink-2"
-                      style={{ background: `hsl(0 0% ${18 + i * 7}%)` }}
+                      src={`/executores/${i + 1}.webp`}
+                      alt=""
+                      width={40}
+                      height={40}
+                      sizes="40px"
+                      className="size-10 rounded-full border-2 border-ink-2 object-cover"
                     />
                   ))}
                 </div>
@@ -203,9 +207,9 @@ export function Trail() {
             ))}
 
             {/* fechamento */}
-            <article className="flex h-full max-h-[32rem] w-[90vw] max-w-[34rem] flex-none flex-col justify-between rounded-[1.75rem] bg-white p-4 text-ink min-[360px]:p-5 sm:p-10">
+            <article className="flex w-[90vw] max-w-[34rem] flex-none flex-col justify-between gap-8 self-center rounded-[1.75rem] bg-white p-5 text-center text-ink sm:h-full sm:max-h-[32rem] sm:gap-0 sm:self-auto sm:p-10 sm:text-left">
               <div>
-                <p className="label flex items-center gap-2 text-red">
+                <p className="label flex items-center justify-center gap-2 text-red sm:justify-start">
                   <InfinityIcon /> Acesso vitalício
                 </p>
                 <p className="mt-5 text-[clamp(1.9rem,3.4vw,2.9rem)] leading-[1] font-extrabold tracking-[-0.045em]">

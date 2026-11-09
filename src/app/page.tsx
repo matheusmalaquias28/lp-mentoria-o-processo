@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Motion } from "@/components/motion/Motion";
 import { Hero } from "@/components/sections/Hero";
 import { WhatIs } from "@/components/sections/WhatIs";
@@ -17,6 +18,21 @@ export default function Home() {
     <>
       <main>
         <Hero />
+        {/* símbolo de vidro invadindo a hero e a seção seguinte, colado na borda direita (só desktop) */}
+        <div aria-hidden className="pointer-events-none relative z-20 hidden h-0 lg:block">
+          <div className="absolute top-0 right-0 w-[clamp(13rem,17vw,19rem)] -translate-y-1/2">
+            <div className="float [--float:-14px]" style={{ animationDuration: "7s" }}>
+              <Image
+                src="/simbolo.webp"
+                alt=""
+                width={640}
+                height={749}
+                sizes="19rem"
+                className="h-auto w-full rotate-[14deg] drop-shadow-[0_30px_50px_rgb(232_20_28/0.35)]"
+              />
+            </div>
+          </div>
+        </div>
         <WhatIs />
         <WhyQuit />
         <Method />

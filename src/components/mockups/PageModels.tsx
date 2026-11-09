@@ -13,7 +13,6 @@ type Model = {
   headline: string;
   sections: number;
   ctas: number;
-  checks: [string, boolean][];
   selected?: boolean;
 };
 
@@ -28,11 +27,6 @@ const models: Model[] = [
     headline: "+60 modelos prontos pra fabricar e vender",
     sections: 14,
     ctas: 5,
-    checks: [
-      ["Planos e preços", true],
-      ["Prova social", true],
-      ["Garantia", true],
-    ],
     selected: true,
   },
   {
@@ -45,11 +39,6 @@ const models: Model[] = [
     headline: "+200 folhas de exercícios pra imprimir",
     sections: 13,
     ctas: 4,
-    checks: [
-      ["Planos e preços", true],
-      ["Prova social", false],
-      ["Garantia", true],
-    ],
   },
 ];
 
@@ -65,7 +54,7 @@ function Preview({ m }: { m: Model }) {
           {m.headline}
         </p>
         <span className="mt-1.5 block h-1 w-3/4 rounded-full bg-white/25" />
-        <span className="mt-2 block aspect-[16/9] w-3/5 rounded-[3px] border border-white/10 bg-white/[0.04]" />
+        <span className="mt-1 block h-1 w-1/2 rounded-full bg-white/15" />
         <span className="mt-2 rounded-full bg-[#22b45a] px-2 py-0.5 text-[0.375rem] font-bold text-white uppercase">
           Quero acessar
         </span>
@@ -104,19 +93,6 @@ function ModelCard({ m }: { m: Model }) {
             {m.ctas} CTAs
           </span>
         </div>
-        <ul className="mt-2 space-y-1">
-          {m.checks.map(([t, on]) => (
-            <li
-              key={t}
-              className={`flex items-center gap-1.5 text-[0.5625rem] ${on ? "text-[#e4ded4]" : "text-[#7c766d] line-through"}`}
-            >
-              <span className={on ? "text-[#22b45a]" : "text-[#7c766d]"} aria-hidden>
-                {on ? "✓" : "—"}
-              </span>
-              {t}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

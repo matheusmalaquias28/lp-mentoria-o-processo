@@ -59,12 +59,12 @@ export const photos = {
     brief: "Thumb de vídeo do canal",
   },
   plaqueDelivery: {
-    src: null,
-    alt: "Executor recebendo a placa Gold em Vila Velha",
+    src: "/mentor/entrega-placas.webp",
+    alt: "Heitor Nogueira no palco com dois executores segurando as placas Gold e Diamond",
     brief: "Executor recebendo a placa Gold",
   },
   productsTested: {
-    src: null,
+    src: "/formatos/produtos-testados.webp",
     alt: "Anúncios de produtos testados e painel com métricas de campanha",
     brief: "Mockup: anúncios de produtos + notebook com métricas",
   },
@@ -131,13 +131,12 @@ export const featuredStory = {
 };
 
 // TODO: trocar pelos depoimentos em vídeo reais (nome, resultado, vídeo e capa)
-export const videoTestimonials: Video[] = Array.from({ length: 6 }, (_, i) => ({
-  id: `executor-${i + 1}`,
-  name: `Executor ${String(i + 1).padStart(2, "0")}`,
-  meta: "Depoimento em vídeo",
-  src: null,
-  poster: null,
-  preview: null,
+/** depoimentos em vídeo (9:16), comprimidos em public/depoimentos; o primeiro toca sozinho, mudo */
+export const videoTestimonials = [1, 2, 3].map((n) => ({
+  id: `depoimento-${n}`,
+  label: `depoimento ${n} de executor`,
+  src: `/depoimentos/depoimento-${n}.mp4`,
+  poster: `/depoimentos/depoimento-${n}.jpg`,
 }));
 
 export type Proof =

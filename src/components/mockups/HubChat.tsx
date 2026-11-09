@@ -17,20 +17,6 @@ const HEITOR = { name: "Heitor Nogueira", tone: "#e8141c", mentor: true } as con
 
 const before: Msg[] = [
   {
-    name: "Camila R.",
-    time: "09:12",
-    tone: "#7c6cf0",
-    text: "Subi minha primeira oferta ontem. Já posso aumentar a verba ou espero mais um pouco?",
-    replies: [
-      {
-        ...HEITOR,
-        time: "09:20",
-        text: "Espera fechar 3 dias. Se o custo por venda ficar abaixo do teto, aí você sobe.",
-      },
-      { name: "Camila R.", time: "09:21", tone: "#7c6cf0", text: "Fechou, valeu!" },
-    ],
-  },
-  {
     name: "Rafael M.",
     time: "14:05",
     tone: "#2f9e6e",
